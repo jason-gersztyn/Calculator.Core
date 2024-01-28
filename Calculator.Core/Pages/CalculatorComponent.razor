@@ -1,0 +1,87 @@
+﻿@page "/calculator"
+
+<div class="calculator">
+
+    <p id="result" class="calculator-display">@currentResult</p>
+    @*<input type="text" id="result" class="calculator-screen" @bind-value="@currentResult" disabled />*@
+
+    <div class="calculator-body">
+        <button type="button" id="plus" class="operand" value="+" @onclick="@(e => HandleOperand("+"))">+</button>
+        <button type="button" id="minus" class="operand" value="-" @onclick="@(e => HandleOperand("-"))">-</button>
+        <button type="button" id="times" class="operand" value="*" @onclick="@(e => HandleOperand("*"))">&times;</button>
+        <button type="button" id="divide" class="operand" value="/" @onclick="@(e => HandleOperand("/"))">&divide;</button>
+
+        <button type="button" id="nine" class="number" value="9" @onclick="@(e => EnterDigit("9"))">9</button>
+        <button type="button" id="eight" class="number" value="8" @onclick="@(e => EnterDigit("8"))">8</button>
+        <button type="button" id="seven" class="number" value="7" @onclick="@(e => EnterDigit("7"))">7</button>
+
+        <button type="button" id="clear" class="clear" value="clear" @onclick="Clear">AC</button>
+
+        <button type="button" id="six" class="number" value="6" @onclick="@(e => EnterDigit("6"))">6</button>
+        <button type="button" id="five" class="number" value="5" @onclick="@(e => EnterDigit("5"))">5</button>
+        <button type="button" id="four" class="number" value="4" @onclick="@(e => EnterDigit("4"))">4</button>
+
+        <button type="button" id="equals" class="equals" value="=" @onclick="Calculate">=</button>
+
+        <button type="button" id="three" class="number" value="3" @onclick="@(e => EnterDigit("3"))">3</button>
+        <button type="button" id="two" class="number" value="2" @onclick="@(e => EnterDigit("2"))">2</button>
+        <button type="button" id="one" class="number" value="1" @onclick="@(e => EnterDigit("1"))">1</button>
+
+        <button type="button" id="decimal" class="decimal" value="." @onclick="EnterDecimal">.</button>
+
+        <button type="button" id="zero" class="number" value="0" @onclick="@(e => EnterDigit("0"))">0</button>
+    </div>
+</div>
+
+<style>
+    .calculator {
+        width: 400px;
+        border: 2px solid;
+        border-radius: 5px;
+    }
+
+    .calculator-display {
+        font-size: 4rem;
+        height: 80px;
+        background-color: black;
+        color: white;
+        text-align: right;
+        padding-right: 20px;
+        padding-left: 10px;
+    }
+
+    .calculator-body {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 20px;
+        padding: 20px;
+    }
+
+    .number {
+        color: dimgrey;
+    }
+
+    .operand {
+        background-color: grey;
+        color: white;
+    }
+
+    .clear {
+        background-color: grey;
+        color: white;
+    }
+
+    .equals {
+        background-color: forestgreen;
+        color: white;
+    }
+
+    button {
+        height: 60px;
+        background-color: transparent;
+        border-radius: 3px;
+        border: 1px solid;
+        font-size: 2rem;
+        box-shadow: inset 0 0 0 1px;
+    }
+</style>
